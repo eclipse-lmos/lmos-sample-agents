@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: 2024 Deutsche Telekom AG
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+apiVersion: lmos.eclipse/v1
+kind: Agent
+metadata:
+  name: {{ include "reportgenerate-agent.fullname" . }}
+  labels:
+    version: {{ .Chart.AppVersion | quote }}
+spec:
+  description: The PDF Report Generation Agent analyzes user queries to generate tailored reports, compiling insights into a clear, well-structured PDF document.
+  supportedChannels:
+    - web
+  providedCapabilities:
+    - name: get-reportgenerate
+      version: {{ .Chart.AppVersion | replace "-SNAPSHOT" "" | quote }}
+      description: Capability of generating report in PDF file

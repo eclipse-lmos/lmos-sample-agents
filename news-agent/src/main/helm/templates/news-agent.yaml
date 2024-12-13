@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: 2024 Deutsche Telekom AG
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+apiVersion: lmos.eclipse/v1
+kind: Agent
+metadata:
+  name: {{ include "news-agent.fullname" . }}
+  labels:
+    version: {{ .Chart.AppVersion | quote }}
+spec:
+  description: This is a news agent which can summarize online pages.
+  supportedChannels:
+    - web
+  providedCapabilities:
+    - name: get-news
+      version: {{ .Chart.AppVersion | replace "-SNAPSHOT" "" | quote }}
+      description: Capability to summarize the news of an online web page.

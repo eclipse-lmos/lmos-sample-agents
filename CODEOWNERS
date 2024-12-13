@@ -1,0 +1,11 @@
+# This file helps GitHub doing automatic review requests for new PRs.
+
+# Assign all PRs to the most suitable committer:
+/buildSrc/ @pschwager
+/productsearch-agent/ @dharam1291
+/reportgenerate-agent/ @dharam1291
+/techspec-agent/ @dharam1291
+/news-agent/ @robwin
+/weather-agent/ @robwin
+
+*       @kaikreuzer

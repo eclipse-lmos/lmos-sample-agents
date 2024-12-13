@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: 2024 Deutsche Telekom AG
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+apiVersion: lmos.eclipse/v1
+kind: Agent
+metadata:
+  name: {{ include "productsearch-agent.fullname" . }}
+  labels:
+    version: {{ .Chart.AppVersion | quote }}
+spec:
+  description: This agent provides a curated list of TV, laptop, and mobile phone recommendations specifically for queries containing explicit technical specifications and requirements (e.g., '4K OLED TV', 'laptop with 16GB RAM & RTX 4080', 'phone with 108MP camera'). It excels at matching precise, technically-detailed requirements to available products, best suited for users who know exact specifications they need. The agent requires concrete technical parameters rather than general use cases or qualitative descriptions.
+  supportedChannels:
+    - web
+  providedCapabilities:
+    - name: get-productsearch
+      version: {{ .Chart.AppVersion | replace "-SNAPSHOT" "" | quote }}
+      description: This agent provides a curated list of TV, laptop, and mobile phone recommendations specifically for queries containing explicit technical specifications and requirements (e.g., '4K OLED TV', 'laptop with 16GB RAM & RTX 4080', 'phone with 108MP camera'). It excels at matching precise, technically-detailed requirements to available products, best suited for users who know exact specifications they need. The agent requires concrete technical parameters rather than general use cases or qualitative descriptions.

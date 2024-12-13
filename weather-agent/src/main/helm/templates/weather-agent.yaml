@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: 2024 Deutsche Telekom AG
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+apiVersion: lmos.eclipse/v1
+kind: Agent
+metadata:
+  name: {{ include "weather-agent.fullname" . }}
+  labels:
+    version: {{ .Chart.AppVersion | quote }}
+spec:
+  description: This is the weather agent which can provide weather forecasts.
+  supportedChannels:
+    - web
+  providedCapabilities:
+    - name: get-weather-forecast
+      version: {{ .Chart.AppVersion | replace "-SNAPSHOT" "" | quote }}
+      description: Capability to provide weather forecasts for cities.

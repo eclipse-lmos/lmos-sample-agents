@@ -1,0 +1,20 @@
+#
+# SPDX-FileCopyrightText: 2024 Deutsche Telekom AG
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+apiVersion: lmos.eclipse/v1
+kind: Agent
+metadata:
+  name: {{ include "techspec-agent.fullname" . }}
+  labels:
+    version: {{ .Chart.AppVersion | quote }}
+spec:
+  description: This agent provides comprehensive technical information and specifications for various electronics products (TVs, Mobile Phones, Laptops). It translates general user requirements, like screen brightness for outdoor use or screen size preferences for video consumption, into relevant product features and capabilities. This agent is designed to help users understand technical details that match their qualitative needs, without requiring them to specify exact specifications upfront.
+  supportedChannels:
+    - web
+  providedCapabilities:
+    - name: get-techspec
+      version: {{ .Chart.AppVersion | replace "-SNAPSHOT" "" | quote }}
+      description: This agent provides comprehensive technical information and specifications for various electronics products (TVs, Mobile Phones, Laptops). It translates general user requirements, like screen brightness for outdoor use or screen size preferences for video consumption, into relevant product features and capabilities. This agent is designed to help users understand technical details that match their qualitative needs, without requiring them to specify exact specifications upfront.
