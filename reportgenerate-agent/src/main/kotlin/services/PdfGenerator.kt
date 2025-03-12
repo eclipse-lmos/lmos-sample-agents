@@ -12,7 +12,7 @@ import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.kernel.pdf.action.PdfAction
 import com.itextpdf.layout.Document
 import com.itextpdf.layout.element.*
-import com.itextpdf.layout.property.TextAlignment
+import com.itextpdf.layout.properties.TextAlignment
 import com.nimbusds.jose.shaded.gson.GsonBuilder
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
@@ -43,7 +43,7 @@ class PdfGenerator(@Value("\${report.path}") val reportPath: String) {
             val title = Paragraph("Product Recommendation")
                 .setTextAlignment(TextAlignment.CENTER)
                 .setFontSize(20f)
-                .setBold()
+                .simulateBold()
             document.add(title)
 
             var correctedJson = content.trimIndent()
@@ -74,7 +74,7 @@ class PdfGenerator(@Value("\${report.path}") val reportPath: String) {
 
                 // Add category section header
                 val categoryHeader = Paragraph(categoryName)
-                    .setBold()
+                    .simulateBold()
                     .setFontSize(16f)
                     .setTextAlignment(TextAlignment.LEFT)
                     .setMarginTop(20f)
@@ -83,19 +83,19 @@ class PdfGenerator(@Value("\${report.path}") val reportPath: String) {
                 // Create a table with 5 columns: S.No., Name, Thumbnail, Price, Review
                 val table = Table(floatArrayOf(1f, 3f, 3f, 2f, 2f))
                 table.addHeaderCell(
-                    Cell().add(Paragraph("S.No.").setBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("S.No.").simulateBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
                 )
                 table.addHeaderCell(
-                    Cell().add(Paragraph("Name").setBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("Name").simulateBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
                 )
                 table.addHeaderCell(
-                    Cell().add(Paragraph("Thumbnail Image").setBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("Thumbnail Image").simulateBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
                 )
                 table.addHeaderCell(
-                    Cell().add(Paragraph("Price").setBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("Price").simulateBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
                 )
                 table.addHeaderCell(
-                    Cell().add(Paragraph("Review").setBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
+                    Cell().add(Paragraph("Review").simulateBold()).setBackgroundColor(ColorConstants.LIGHT_GRAY)
                 )
 
                 // Populate the table with product data

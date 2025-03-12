@@ -12,12 +12,15 @@ repositories {
 }
 
 dependencies {
+    val kotlin = "2.1.10"
+    val helm = "2.2.0"
     implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.3")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10")
-    implementation("org.jetbrains.kotlin:kotlin-serialization:2.1.10")
-    implementation("org.jetbrains.kotlin:kotlin-allopen:2.1.10")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-allopen:$kotlin")
     implementation("org.graalvm.buildtools:native-gradle-plugin:0.10.2")
-    implementation("com.citi.gradle-plugins.helm:helm-plugin:2.2.0")
-    implementation("com.citi.gradle-plugins.helm:helm-publish-plugin:2.2.0")
+    implementation("com.citi.gradle-plugins.helm:helm-plugin:$helm")
+    implementation("com.citi.gradle-plugins.helm:helm-publish-plugin:$helm")
     implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.31.0")
+    implementation("net.researchgate.release:net.researchgate.release.gradle.plugin:3.1.0")
 }
