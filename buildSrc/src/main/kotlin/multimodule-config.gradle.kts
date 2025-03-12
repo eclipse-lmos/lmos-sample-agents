@@ -17,6 +17,7 @@ plugins {
     id("com.citi.helm")
     id("com.citi.helm-publish")
     id("com.vanniktech.maven.publish")
+    //id("net.researchgate.release")
 }
 
 kotlin {
@@ -26,6 +27,7 @@ kotlin {
     }
 }
 
+fun getProperty(propertyName: String) = System.getenv(propertyName) ?: project.findProperty(propertyName) as String
 group = "org.eclipse.lmos"
 
 mavenPublishing {
@@ -55,11 +57,12 @@ mavenPublishing {
         scm {
             url = "https://github.com/eclipse-lmos/lmos-sample-agents.git"
         }
-
-    release {
-        newVersionCommitMessage = "New Snapshot-Version:"
-        preTagCommitMessage = "Release:"
     }
+
+//    release {
+//        newVersionCommitMessage = "New Snapshot-Version:"
+//        preTagCommitMessage = "Release:"
+//    }
 
     repositories {
         maven {
@@ -107,10 +110,10 @@ helm {
 }
 
 dependencies {
-    val arcVersion = "0.1.0-SNAPSHOT"
-    val kotlinXVersion = "1.8.0"
-    val kotlinSerialization = "1.7.1"
-    val springBootVersion = "3.3.3"
+    val arcVersion = "0.121.0"
+    val kotlinXVersion = "1.10.1"
+    val kotlinSerialization = "1.8.0"
+    val springBootVersion = "3.4.3"
 
     // Platform/BOM Dependencies
     implementation(platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}"))
@@ -141,21 +144,22 @@ dependencies {
     // Test
     testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.testcontainers:mongodb:1.19.7")
+    testImplementation("org.testcontainers:mongodb:1.20.6")
 
     //Ktor
-    val ktorVersion = "2.3.12"
+    val ktorVersion = "3.1.1"
     implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-cio:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
     implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
     implementation("io.ktor:ktor-client-cio-jvm:$ktorVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.8.0")
 
     //pdf
-    implementation("com.itextpdf:itext7-core:7.1.15")
+    implementation("com.itextpdf:itext-core:9.1.0")
 
-    implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.30.0")
+    implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.31.0")
+    //implementation("net.researchgate.release:3.1.0")
 }
 
 repositories {
@@ -210,5 +214,3 @@ tasks.named("publish") {
     dependsOn(tasks.named<BootBuildImage>("bootBuildImage"))
     dependsOn(tasks.named("helmPush"))
 }
-
-fun getProperty(propertyName: String) = System.getenv(propertyName) ?: project.findProperty(propertyName) as String
