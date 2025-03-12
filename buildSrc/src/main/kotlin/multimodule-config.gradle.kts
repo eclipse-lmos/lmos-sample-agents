@@ -17,7 +17,7 @@ plugins {
     id("com.citi.helm")
     id("com.citi.helm-publish")
     id("com.vanniktech.maven.publish")
-    //id("net.researchgate.release")
+    id("net.researchgate.release")
 }
 
 kotlin {
@@ -59,10 +59,10 @@ mavenPublishing {
         }
     }
 
-//    release {
-//        newVersionCommitMessage = "New Snapshot-Version:"
-//        preTagCommitMessage = "Release:"
-//    }
+    release {
+        newVersionCommitMessage = "New Snapshot-Version:"
+        preTagCommitMessage = "Release:"
+    }
 
     repositories {
         maven {
@@ -159,7 +159,7 @@ dependencies {
     implementation("com.itextpdf:itext-core:9.1.0")
 
     implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.31.0")
-    //implementation("net.researchgate.release:3.1.0")
+    implementation("net.researchgate.release:3.1.0")
 }
 
 repositories {
