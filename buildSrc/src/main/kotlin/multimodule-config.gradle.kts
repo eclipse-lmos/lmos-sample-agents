@@ -17,7 +17,6 @@ plugins {
     id("com.citi.helm")
     id("com.citi.helm-publish")
     id("com.vanniktech.maven.publish")
-    id("net.researchgate.release")
 }
 
 kotlin {
@@ -57,11 +56,6 @@ mavenPublishing {
         scm {
             url = "https://github.com/eclipse-lmos/lmos-sample-agents.git"
         }
-    }
-
-    release {
-        newVersionCommitMessage = "New Snapshot-Version:"
-        preTagCommitMessage = "Release:"
     }
 
     repositories {
@@ -159,7 +153,6 @@ dependencies {
     implementation("com.itextpdf:itext-core:9.1.0")
 
     implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.31.0")
-    implementation("net.researchgate.release:3.1.0")
 }
 
 repositories {
