@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-gradle-plugin:3.3.3")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10")
     implementation("org.jetbrains.kotlin:kotlin-serialization:2.0.20")
     implementation("org.jetbrains.kotlin:kotlin-allopen:2.0.20")
     implementation("org.graalvm.buildtools:native-gradle-plugin:0.10.2")
