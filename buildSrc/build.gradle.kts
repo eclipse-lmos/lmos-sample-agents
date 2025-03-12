@@ -22,5 +22,4 @@ dependencies {
     implementation("com.citi.gradle-plugins.helm:helm-plugin:$helm")
     implementation("com.citi.gradle-plugins.helm:helm-publish-plugin:$helm")
     implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.31.0")
-    implementation("net.researchgate.release:net.researchgate.release.gradle.plugin:3.1.0")
 }
