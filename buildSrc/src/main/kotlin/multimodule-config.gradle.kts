@@ -204,6 +204,6 @@ tasks.register("helmPush") {
 }
 
 tasks.named("publish") {
-    dependsOn(tasks.named<BootBuildImage>("bootBuildImage"))
+    // TODO: dependsOn(tasks.named<BootBuildImage>("bootBuildImage"))
     dependsOn(tasks.named("helmPush"))
 }

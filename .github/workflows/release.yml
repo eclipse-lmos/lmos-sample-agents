@@ -27,5 +27,32 @@ jobs:
       signing-key-id: ${{ secrets.GPG_SUBKEY_ID }}
       signing-key: ${{ secrets.GPG_PRIVATE_KEY }}
       signing-key-password: ${{ secrets.GPG_PASSPHRASE }}
+      registry-username: ${{ github.actor }}
+      registry-password: ${{ secrets.GITHUB_TOKEN }}
     with:
       release-type: ${{ github.event.inputs.release-type }}
+  publish:
+    needs: CI
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.CI.outputs.version }}
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Docker images
+        run: |
+          ./gradlew build
+          modules=("weather-agent" "news-agent" "productsearch-agent" "techspec-agent" "reportgenerate-agent")
+          version=$(grep '^version=' gradle.properties | awk -F= '{print $2}')
+          for module in "${modules[@]}"; do
+            docker build --build-arg VERSION=$version -f $module/Dockerfile -t ghcr.io/eclipse-lmos/$module:$version $module
+            docker push ghcr.io/eclipse-lmos/$module:$version
+          done
