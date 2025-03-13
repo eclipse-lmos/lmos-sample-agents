@@ -49,6 +49,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Docker images
         run: |
+          echo ${{ needs.CI.outputs.version }}
           ./gradlew build
           modules=("weather-agent" "news-agent" "productsearch-agent" "techspec-agent" "reportgenerate-agent")
           version=$(grep '^version=' gradle.properties | awk -F= '{print $2}')
