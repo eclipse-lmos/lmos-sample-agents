@@ -4,10 +4,4 @@
 
 plugins {
     id("multimodule-config")
-    id("net.researchgate.release") version "3.1.0"
-}
-
-release {
-    newVersionCommitMessage = "New Snapshot-Version:"
-    preTagCommitMessage = "Release:"
 }
