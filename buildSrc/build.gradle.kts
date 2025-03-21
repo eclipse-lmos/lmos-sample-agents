@@ -14,7 +14,7 @@ repositories {
 dependencies {
     val kotlin = "2.1.10"
     val helm = "2.2.0"
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.3")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.4")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin")
     implementation("org.jetbrains.kotlin:kotlin-serialization:$kotlin")
     implementation("org.jetbrains.kotlin:kotlin-allopen:$kotlin")
