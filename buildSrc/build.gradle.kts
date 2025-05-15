@@ -21,5 +21,5 @@ dependencies {
     implementation("org.graalvm.buildtools:native-gradle-plugin:0.10.6")
     implementation("com.citi.gradle-plugins.helm:helm-plugin:$helm")
     implementation("com.citi.gradle-plugins.helm:helm-publish-plugin:$helm")
-    implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.31.0")
+    implementation("com.vanniktech.maven.publish:com.vanniktech.maven.publish.gradle.plugin:0.32.0")
 }
