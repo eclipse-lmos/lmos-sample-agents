@@ -30,7 +30,7 @@ fun getProperty(propertyName: String) = System.getenv(propertyName) ?: project.f
 group = "org.eclipse.lmos"
 
 mavenPublishing {
-    publishToMavenCentral(SonatypeHost.DEFAULT, automaticRelease = true)
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = true)
     signAllPublications()
 
     pom {
